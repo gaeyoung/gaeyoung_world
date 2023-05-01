@@ -1,0 +1,13 @@
+def solution(numbers, target):
+    answer = 0
+    temp_before = [0]
+    for num in numbers :
+        temp = []
+        for tem in temp_before :
+            temp.append(tem + num)
+            temp.append(tem - num)
+        temp_before = temp
+    for bef in temp_before :
+        if bef == target :
+            answer += 1
+    return answer
