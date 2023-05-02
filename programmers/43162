@@ -1,0 +1,17 @@
+def solution(n, computers):      
+    count = 0   
+    visited = [False] * n                               # 방문 여부 확인
+    
+    for j in range(n):
+        if not visited[j] :                             # 방문하지 않았을 때
+            dfs(j, visited, n, computers)               # 방문
+            count += 1
+    return count
+
+
+def dfs(v, visited, n, computers):
+    visited[v] = True                                   # 방문 check
+    
+    for i in range(n):
+        if not visited[i] and computers[v][i]:          # 방문하지 않았고, 연결되어 있을 때
+            dfs(i, visited, n, computers)               # 방문
