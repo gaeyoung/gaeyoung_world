@@ -1,0 +1,12 @@
+def solution(name, yearning, photo):
+    answer = []
+    dictionary = dict(zip(name, yearning))
+    for i in range(len(photo)) :
+        result = 0
+        for j in range(len(photo[i])) :
+            a = dictionary.get(photo[i][j])
+            if a is None :
+                a = 0
+            result += a
+        answer.append(result)
+    return answer
