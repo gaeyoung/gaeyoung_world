@@ -1,0 +1,15 @@
+def solution(n, m, section):
+    answer = 0
+    while section :
+        if section[-1] - section[0] + 1 <= m :
+            answer += 1
+            break
+        else :
+            for i in range(len(section)) :
+                if section[i] <= section[0] + m - 1 :
+                    pass
+                else :
+                    break
+            section = section[i :]
+            answer += 1
+    return answer
