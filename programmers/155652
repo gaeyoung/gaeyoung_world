@@ -1,0 +1,12 @@
+def solution(s, skip, index):
+    alph = 'abcdefghijklmnopqrstuvwxyz'
+    
+    for al in skip :
+        if al in alph :
+            alph = alph.replace(al,'')
+    
+    answer = ''    
+    for al in s :
+        answer += alph[(alph.index(al) + index ) % len(alph)]
+    
+    return answer
