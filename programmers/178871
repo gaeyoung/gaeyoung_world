@@ -1,0 +1,18 @@
+# def solution(players, callings):
+#     for i in range(len(callings)) :
+#         a = players.index(callings[i])
+#         players[a-1 : a+1] = players[a-1 : a+1][::-1]
+#     return players
+
+def solution(players, callings):
+    rank = list(range(len(players)))
+    dictionary = dict(zip(players, rank))   #선수별 등수
+    dictionary2 = dict(zip(rank, players))  #등수별 선수 (1:~ 2:~)
+    for i in range(len(callings)) :
+        ra = dictionary[callings[i]]              #해당 선수의 등수
+        dictionary2[ra] = dictionary2[ra-1]
+        dictionary2[ra-1] = callings[i]
+        dictionary[callings[i]] = ra-1
+        dictionary[dictionary2[ra]] = ra
+    dictionary = dict(sorted(dictionary.items(), key = lambda x : x[1]))
+    return list(dictionary.keys())
