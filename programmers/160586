@@ -1,0 +1,25 @@
+def solution(keymap, targets):
+    a = []
+    b = []
+    for i in range(len(targets)) :
+        res = 0
+        for j in range(len(targets[i])) :
+            b.append([])
+            for k in range(len(keymap)) :
+                if targets[i][j] in keymap[k] :
+                    for l in range(len(keymap[k])) :
+                        if targets[i][j] == keymap[k][l] :
+                            b[-1].append(l+1)
+                            break
+                else :
+                    b[-1].append(-1)
+            if min(b[-1]) == -1 and max(b[-1]) == -1 :
+                res = -1
+                break
+            elif min(b[-1]) == -1 :
+                b[-1] = [an for an in b[-1] if an not in [-1]]
+                res += min(b[-1])
+            else :
+                res += min(b[-1])
+        a.append(res)
+    return a
