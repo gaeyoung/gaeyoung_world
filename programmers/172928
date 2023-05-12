@@ -1,0 +1,38 @@
+def solution(park, routes):
+    ewsn = ["E", "W", "S", "N"]
+    li = list(range(4))
+    a = dict(zip(ewsn, li))
+    
+    dy = [1, -1, 0, 0]
+    dx = [0, 0, 1, -1]
+    
+    for i in range(len(park)) :
+        if "S" in park[i] :
+            for j in range(len(park[i])) :
+                if park[i][j] == "S" :
+                    x = i
+                    y = j
+    where = [x, y]
+    
+    obs = []
+    for i in range(len(park)) :
+        if "X" in park[i] :
+            for j in range(len(park[i])) :
+                if park[i][j] == "X" :
+                    obs.append([i, j])
+    
+    for i in range(len(routes)) :
+        x = where[0]
+        y = where[1]
+        move = a.get(routes[i][0])
+        for j in range(int(routes[i][2])) :
+            x += dx[move]
+            y += dy[move]
+            if [x, y] not in obs and x < len(park) and y < len(park[0]) and x >= 0 and y >= 0 :
+                continue
+            else :
+                break
+        if [x, y] not in obs and x < len(park) and y < len(park[0]) and x >= 0 and y >= 0 :
+            where = [x, y]
+    
+    return where
