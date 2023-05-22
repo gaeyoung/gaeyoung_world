@@ -1,0 +1,13 @@
+def solution(s):
+    a = 0
+    b = 0
+    while s != '1' :
+        a += 1
+        num = 0
+        for i in s :
+            if i == '1' :
+                num += 1
+        b += len(s) - num
+        s = bin(num)[2:]
+
+    return a, b
