@@ -1,0 +1,27 @@
+def solution(str1, str2):
+    from collections import Counter
+
+    str1 = str1.upper()
+    str2 = str2.upper()
+    
+    st1 = []
+    for i in range(len(str1)-1) :
+        if str1[i].isalpha() and str1[i+1].isalpha() :
+            st1.append(str1[i] + str1[i+1])
+    st2 = []
+    for i in range(len(str2)-1) :
+        if str2[i].isalpha() and str2[i+1].isalpha() :
+            st2.append(str2[i] + str2[i+1])
+    
+    st1 = Counter(st1)
+    st2 = Counter(st2)
+    
+    inter = sum((st1 | st2).values())
+    unio = sum((st1 & st2).values())
+    print(inter, unio)
+    
+    answer = 65536
+    if inter != 0 :
+        answer = int(unio / inter * 65536)
+
+    return answer
