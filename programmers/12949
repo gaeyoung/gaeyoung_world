@@ -1,0 +1,16 @@
+def solution(arr1, arr2):
+    n = len(arr1)
+    m = len(arr2[0])
+    p = len(arr2)
+
+    answer = []
+    for i in range(n) :
+        a = []
+        for j in range(m) :
+            b = 0
+            for k in range(p) :
+                b += arr1[i][k] * arr2[k][j]
+            a.append(b)
+        answer.append(a)
+
+    return answer
