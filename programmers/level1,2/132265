@@ -1,0 +1,18 @@
+def solution(topping):
+    from collections import Counter
+    
+    top = Counter(topping)
+    answer = 0
+    
+    a = set()
+    for i in topping :
+        top[i] -= 1
+        a.add(i)
+        
+        if top[i] == 0 :
+            top.pop(i)
+
+        if len(top) == len(a) :
+            answer += 1
+
+    return answer
